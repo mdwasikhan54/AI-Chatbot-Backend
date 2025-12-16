@@ -143,49 +143,56 @@ The API comes with auto-generated interactive documentation.
 
 ---
 
-## ❓ Implementation Q&A
+## ❓ Implementation Q&A (Task Requirements)
 
-### 1. How did you integrate the RAG pipeline for the chatbot?
-I implemented a custom RAG service (`rag_service.py`). The pipeline follows these steps:
-* **Retrieval:** The system loads a `knowledge.json` file. When a query is received, it filters out stop words (e.g., "is", "the") and performs a keyword search against the document topics and content.
-* **Augmentation:** If a relevant document is found, its content is injected into the prompt context.
-* **Generation:** The context and query are passed to the AI model logic to generate a factual response, minimizing hallucinations.
+### 1. How did you integrate the RAG pipeline for the chatbot, and what role does document retrieval play in the response generation?
+I integrated the RAG pipeline within the `ChatService` class (`rag_service.py`).
+* **Integration:** The system loads a structured `knowledge.json` file on startup. When a user sends a query, the system first filters out stop words (e.g., *is, the, are*) to extract core keywords. It then scans the knowledge base for matching topics or content content using a keyword search algorithm.
+* **Role of Retrieval:** Document retrieval acts as the "Grounding" mechanism. Instead of relying solely on the AI model's training data (which can hallucinate), the retrieved document snippet provides the factual context. This context is injected into the prompt (*"Based on [Context], answer [Query]"*), ensuring the AI's response is accurate and domain-specific.
 
-### 2. What database and model structure did you use?
-I chose **PostgreSQL** for its ACID compliance and relational integrity.
-* **User Model:** Stores `email`, `hashed_password`, and `is_active` status.
-* **ChatHistory Model:** Stores `message`, `is_user_message` (boolean), `timestamp`, and a Foreign Key `user_id`.
-* **Why this approach?** The relational structure (One-to-Many) efficiently links users to their specific chats, enabling quick history retrieval and data isolation.
+### 2. What database and model structure did you use for storing user and chat history, and why did you choose this approach?
+I utilized a **Relational Database (PostgreSQL)** with **SQLAlchemy ORM**.
+* **Structure:**
+    * **`User` Model:** Stores `email`, `hashed_password`, and `is_active` status.
+    * **`ChatHistory` Model:** Stores `message`, `is_user_message` (boolean), `timestamp`, and a Foreign Key `user_id`.
+* **Why this approach?** I chose a relational model (One-to-Many) because chat history is inherently structured and must be strictly linked to specific users. PostgreSQL ensures data integrity (ACID compliance) and allows for efficient querying of historical data indexed by user IDs, which is more reliable than NoSQL for this specific schema.
 
-### 3. How did you implement user authentication using JWT?
-Authentication is handled via `route_auth.py`.
-* **Login:** Validates credentials and issues a signed JWT containing the user's email and expiration time.
-* **Security:** Passwords are never stored plainly; they are hashed using `bcrypt`. The API uses `OAuth2PasswordBearer` to enforce token presence on protected routes.
+### 3. How did you implement user authentication using JWT? What security measures did you take for handling passwords and tokens?
+Authentication is handled via the `route_auth.py` module using the **OAuth2** standard with **JWT (JSON Web Tokens)**.
+* **Implementation:** Upon valid login, the server issues a signed JWT containing the user's email (`sub`) and an expiration time (`exp`).
+* **Security Measures:**
+    * **Password Hashing:** Passwords are never stored in plain text. I used `bcrypt` (via `passlib`) for strong hashing and salting before storage.
+    * **Token Validation:** Protected routes use `OAuth2PasswordBearer`. A custom dependency (`get_current_user`) verifies the JWT signature on every request to ensure it hasn't been tampered with or expired.
 
-### 4. How does the chatbot generate responses?
-The `ChatService` class orchestrates the generation. It first attempts to retrieve context from the local knowledge base.
-* **Scenario A (Doc Found):** Returns the document snippet combined with an AI-generated explanation.
-* **Scenario B (No Doc):** Triggers a fallback mechanism to politely inform the user that information is unavailable, preventing false answers.
+### 4. How does the chatbot generate responses using the AI model (GPT-3) after retrieving documents?
+The response generation logic is orchestrated in the `get_response` method:
+1.  **Context Retrieval:** The system searches the knowledge base for relevant information based on the user's query.
+2.  **Prompt Engineering:** If a relevant document is found, it constructs a prompt that combines the retrieved context with the user's question.
+3.  **Generation:** This structured prompt is passed to the AI model logic. (Note: For this submission, the OpenAI API call is architecturally mocked to simulate the behavior without incurring costs/latency, returning a formatted response that cites the retrieved context).
+4.  **Fallback:** If no documents match, a fallback mechanism triggers a polite response indicating that information is unavailable, preventing false answers.
 
-### 5. How did you schedule background tasks?
-I utilized **APScheduler** (`BackgroundScheduler`) initialized in `main.py`.
-* **Cleanup Task:** Runs every 24 hours. It executes a database query to delete `ChatHistory` records where the timestamp is older than 30 days.
-* **Email Task:** Uses FastAPI's `BackgroundTasks` feature to send verification emails asynchronously immediately after the `/signup` request returns, ensuring low API latency.
+### 5. How did you schedule and implement background tasks for cleaning up old chat history, and how often do these tasks run?
+I implemented background tasks using the **APScheduler** library for precision and **FastAPI BackgroundTasks** for immediate actions.
+* **Cleanup Task:** A background job (`delete_old_chat_history`) is scheduled to run **every 24 hours** (Daily). It executes a database query to delete `ChatHistory` records where the timestamp is older than 30 days.
+* **Email Task:** For the "Welcome Email" feature, I used FastAPI's native `BackgroundTasks`. This allows the email sending function to run asynchronously *after* the HTTP response is returned to the user, ensuring the signup API remains fast and non-blocking.
 
-### 6. What testing strategies did you use?
-* **Interactive Testing:** Utilized Swagger UI to manually test all endpoints (Signup flow, Login token generation, RAG response accuracy).
-* **Edge Cases:** Tested queries with no matching documents to verify fallback logic and invalid login attempts to verify security.
-* **Latency Checks:** FastAPI's async nature ensures responses remain fast under load.
+### 6. What testing strategies did you use to ensure the functionality of the chatbot, authentication, and background tasks?
+* **Interactive API Testing:** I extensively used the **Swagger UI** (`/docs`) to manually test user flows: registering a new user, logging in to get a token, and using that token to access the protected `/chat` endpoint.
+* **Edge Case Validation:** I tested specific scenarios such as:
+    * Queries with no matching documents (to verify fallback logic).
+    * Invalid or expired tokens (to verify security gates).
+    * Duplicate email registration (to verify database constraints).
+* **Latency Monitoring:** I observed response times during the RAG process to ensure the async pipeline performs within acceptable limits.
 
-### 7. What external services did you integrate?
-* **Database:** Hosted PostgreSQL (Neon DB).
-* **AI Service:** Architecture designed for OpenAI API (currently mocked for cost-efficiency during development).
-* **Configuration:** All external credentials are managed via `.env` files for security.
+### 7. What external services (APIs, databases, search engines) did you integrate, and how did you set up and configure them?
+* **Database:** Integrated **Neon DB** (Serverless PostgreSQL) via connection string configuration.
+* **AI Service:** The architecture is designed for **OpenAI API** integration.
+* **Configuration:** All external service credentials (Database URL, API Keys, Secret Keys) are managed securely via a `.env` file using `pydantic-settings`. This ensures sensitive data is decoupled from the codebase and easy to configure across environments.
 
-### 8. How would you expand this chatbot?
-* **Vector Database:** Integrate FAISS or Pinecone for semantic search instead of keyword matching.
-* **Real-time Updates:** Implement an Admin API to update `knowledge.json` or the Vector DB dynamically without restarting the server.
-* **Multi-user Sessions:** The current DB schema already supports multi-user sessions via `user_id`. I would add WebSocket support for real-time collaborative chat interfaces.
+### 8. How would you expand this chatbot to support more advanced features, such as real-time knowledge base updates or multi-user chat sessions?
+* **Real-time Updates:** I would implement an Admin API endpoint (e.g., `POST /knowledge/upload`) that allows uploading PDF or Text files. These would be parsed and indexed into the knowledge base dynamically without requiring a server restart.
+* **Vector Database:** To support more advanced retrieval, I would migrate from keyword search to a Vector Database (like **Pinecone** or **FAISS**) to enable semantic search.
+* **Multi-user Sessions:** The current database schema already supports multi-user sessions via `user_id`. To enhance this, I would integrate **WebSockets** to support real-time, bi-directional streaming of chat messages for a more fluid user experience.
 
 ---
 
@@ -205,3 +212,4 @@ If I were to expand this project further, I would implement:
 </div>
 
 If you find this project helpful, please drop a ⭐ star on the repo\!
+
