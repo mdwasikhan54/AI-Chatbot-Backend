@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "topic": "return policy",
+    "content": "You can return any item within 30 days of purchase. The item must be unused and in original packaging. Refunds are processed within 5-7 business days."
+  },
+  {
+    "id": 2,
+    "topic": "shipping",
+    "content": "We offer free shipping on orders over $50. Standard shipping takes 3-5 business days. Express shipping takes 1-2 business days."
+  },
+  {
+    "id": 3,
+    "topic": "payment methods",
+    "content": "We accept Visa, MasterCard, PayPal, and Apple Pay. Crypto payments are currently not supported."
+  },
+  {
+    "id": 4,
+    "topic": "contact support",
+    "content": "You can reach our support team at support@sparktech.com or call us at +1-800-555-0199. Available 24/7."
+  },
+  {
+    "id": 5,
+    "topic": "about sparktech",
+    "content": "SparkTech is a leading AI solutions provider specializing in chatbots, automation, and data analytics."
+  }
+]
