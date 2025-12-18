@@ -91,7 +91,7 @@ Follow these steps to run the project locally:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/mdwasikhan54/AI-Chatbot-Backend.git](https://github.com/mdwasikhan54/AI-Chatbot-Backend.git)
+git clone https://github.com/mdwasikhan54/AI-Chatbot-Backend.git
 cd AI-Chatbot-Backend
 ```
 
@@ -143,7 +143,7 @@ The API comes with auto-generated interactive documentation.
 
 ---
 
-## ❓ Implementation Q&A (Task Requirements)
+## ❓ Implementation Q&A
 
 ### 1. How did you integrate the RAG pipeline for the chatbot, and what role does document retrieval play in the response generation?
 I integrated the RAG pipeline within the `ChatService` class (`rag_service.py`).
@@ -212,4 +212,3 @@ If I were to expand this project further, I would implement:
 </div>
 
 If you find this project helpful, please drop a ⭐ star on the repo\!
-
