@@ -2,26 +2,101 @@
   {
     "id": 1,
     "topic": "return policy",
-    "content": "You can return any item within 30 days of purchase. The item must be unused and in original packaging. Refunds are processed within 5-7 business days."
+    "content": "You can return any physical item within 30 days of purchase provided it is unused and in its original packaging. Digital products are non-refundable once downloaded. To initiate a return, visit the 'My Orders' section."
   },
   {
     "id": 2,
-    "topic": "shipping",
-    "content": "We offer free shipping on orders over $50. Standard shipping takes 3-5 business days. Express shipping takes 1-2 business days."
+    "topic": "shipping options",
+    "content": "We offer Standard (5-7 business days), Expedited (2-3 business days), and Overnight shipping. Free standard shipping is available on orders exceeding $50 globally."
   },
   {
     "id": 3,
     "topic": "payment methods",
-    "content": "We accept Visa, MasterCard, PayPal, and Apple Pay. Crypto payments are currently not supported."
+    "content": "We securely accept major credit cards (Visa, MasterCard, Amex), PayPal, and Apple Pay. For enterprise clients, bank transfers and invoicing options are available upon request."
   },
   {
     "id": 4,
-    "topic": "contact support",
-    "content": "You can reach our support team at support@sparktech.com or call us at +1-800-555-0199. Available 24/7."
+    "topic": "customer support hours",
+    "content": "Our support team is available 24/7 via live chat. Phone support is available from 9 AM to 6 PM (EST), Monday through Friday. Email queries are typically answered within 24 hours."
   },
   {
     "id": 5,
-    "topic": "about sparktech",
-    "content": "SparkTech is a leading AI solutions provider specializing in chatbots, automation, and data analytics."
+    "topic": "password reset",
+    "content": "If you've forgotten your password, click on 'Forgot Password' at the login screen. A reset link will be sent to your registered email address. This link expires in 1 hour."
+  },
+  {
+    "id": 6,
+    "topic": "order tracking",
+    "content": "Once your order ships, you will receive a tracking number via email. You can also track your order status in real-time by logging into your account dashboard."
+  },
+  {
+    "id": 7,
+    "topic": "subscription plans",
+    "content": "We offer three tiers: Basic ($10/mo), Pro ($30/mo), and Enterprise (Custom pricing). You can upgrade or downgrade your plan at any time from the billing settings."
+  },
+  {
+    "id": 8,
+    "topic": "cancel subscription",
+    "content": "To cancel your subscription, go to Settings > Billing > Cancel Subscription. Your access will continue until the end of the current billing cycle."
+  },
+  {
+    "id": 9,
+    "topic": "refund timeline",
+    "content": "Refunds are processed immediately upon return inspection. Depending on your bank or payment provider, it may take 5-10 business days for the funds to appear in your account."
+  },
+  {
+    "id": 10,
+    "topic": "international shipping",
+    "content": "Yes, we ship to over 150 countries. International shipping rates and customs duties vary by location and are calculated at checkout."
+  },
+  {
+    "id": 11,
+    "topic": "data privacy",
+    "content": "We take data privacy seriously. Your personal information is encrypted and never sold to third parties. For full details, please refer to our GDPR-compliant Privacy Policy page."
+  },
+  {
+    "id": 12,
+    "topic": "api access",
+    "content": "API access is available for Pro and Enterprise plan users. You can generate API keys from the Developer settings in your dashboard. Rate limits apply based on your tier."
+  },
+  {
+    "id": 13,
+    "topic": "bulk orders",
+    "content": "We offer discounts for bulk orders or corporate gifting. Please contact our sales team at sales@example.com with your requirements for a custom quote."
+  },
+  {
+    "id": 14,
+    "topic": "mobile app",
+    "content": "Our mobile app is available for both iOS and Android devices. You can manage orders, receive notifications, and access exclusive mobile-only deals through the app."
+  },
+  {
+    "id": 15,
+    "topic": "account deletion",
+    "content": "To permanently delete your account and all associated data, please submit a request through the Privacy Settings tab. This action is irreversible."
+  },
+  {
+    "id": 16,
+    "topic": "gift cards",
+    "content": "Digital gift cards are available in denominations of $10, $25, $50, and $100. They are delivered instantly via email and have no expiration date."
+  },
+  {
+    "id": 17,
+    "topic": "warranty",
+    "content": "All electronics come with a standard 1-year manufacturer warranty. Extended warranty plans covering accidental damage are available for purchase at checkout."
+  },
+  {
+    "id": 18,
+    "topic": "affiliate program",
+    "content": "Join our affiliate program to earn commissions on referrals. Sign up via the footer link to get your unique referral code and marketing assets."
+  },
+  {
+    "id": 19,
+    "topic": "failed payment",
+    "content": "If your payment fails, please check your card details and ensure sufficient funds. If the issue persists, try a different payment method or contact your bank."
+  },
+  {
+    "id": 20,
+    "topic": "general inquiry",
+    "content": "For any other questions not listed here, please use the contact form on our website or email general@example.com."
   }
 ]
