@@ -26,32 +26,45 @@ class ChatService:
 
     def _retrieve_documents(self, query: str) -> Optional[str]:
         """
-        Retrieves relevant documents by filtering out common stop words.
-        Prioritizes topic matches over content keyword matches.
+        Retrieves the most relevant document using a Scoring Algorithm.
+        Prioritizes Topic Match > Content Match.
         """
         query_lower = query.lower()
         
-        # 1. Check for exact topic match first (High Precision)
-        for item in self.knowledge_base:
-            if item["topic"] in query_lower:
-                return item["content"]
-
-        # 2. Filter out stop words for content search
-        stop_words = {"is", "are", "am", "you", "your", "the", "a", "an", "in", "on", "of", "to", "for", "with", "what", "how"}
+        # Stop words to filter out
+        stop_words = {"is", "are", "am", "you", "your", "the", "a", "an", "in", "on", "of", "to", "for", "with", "what", "how", "process", "do", "does", "please", "tell", "me"}
+        
+        # Extract meaningful keywords
         query_words = [word for word in query_lower.split() if word not in stop_words]
-
-        # If no meaningful keywords remain, return None
+        
         if not query_words:
             return None
 
-        # 3. Search for meaningful keywords in content
+        best_match = None
+        highest_score = 0
+
         for item in self.knowledge_base:
+            score = 0
+            topic_lower = item["topic"].lower()
             content_lower = item["content"].lower()
-            # Check if any meaningful keyword exists in the content
-            if any(word in content_lower for word in query_words):
-                return item["content"]
-        
-        return None
+
+            # Scoring Logic:
+            for word in query_words:
+                # 1. Topic Match (High Priority: +10 points)
+                if word in topic_lower:
+                    score += 10
+                
+                # 2. Content Match (Lower Priority: +1 point)
+                if word in content_lower:
+                    score += 1
+
+            # Keep track of the document with the highest score
+            if score > highest_score:
+                highest_score = score
+                best_match = item["content"]
+
+        # Only return if the score is meaningful (threshold e.g., > 0)
+        return best_match if highest_score > 0 else None
 
     async def get_response(self, user_query: str) -> str:
         """
@@ -66,10 +79,9 @@ class ChatService:
             if retrieved_info:
                 return (
                     f"🔍 **Retrieved Context:** {retrieved_info}\n\n"
-                    f"🤖 **AI Answer:** Based on our documents, {retrieved_info} "
+                    f"🤖 **AI Answer:** Based on our documents, {retrieved_info}"
                 )
             else:
-                # Fallback responses for irrelevant queries
                 fallback_responses = [
                     "I'm sorry, I couldn't find specific information about that in my database.",
                     "Could you please rephrase? I don't have documents related to this query.",
@@ -79,6 +91,7 @@ class ChatService:
         
         else:
             # --- Real AI Integration Placeholder ---
+            # In a real scenario, you would send 'retrieved_info' + 'user_query' to OpenAI here.
             return "Real AI implementation placeholder."
 
 chat_service = ChatService()

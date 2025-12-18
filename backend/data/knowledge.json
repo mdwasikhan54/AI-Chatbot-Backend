@@ -1,102 +1,127 @@
 [
   {
     "id": 1,
-    "topic": "return policy",
-    "content": "You can return any physical item within 30 days of purchase provided it is unused and in its original packaging. Digital products are non-refundable once downloaded. To initiate a return, visit the 'My Orders' section."
+    "topic": "accepted payment methods",
+    "content": "We accept all major credit cards including Visa, MasterCard, and American Express. We also support PayPal, Apple Pay, and Google Pay. Cryptocurrency is currently not accepted."
   },
   {
     "id": 2,
-    "topic": "shipping options",
-    "content": "We offer Standard (5-7 business days), Expedited (2-3 business days), and Overnight shipping. Free standard shipping is available on orders exceeding $50 globally."
+    "topic": "transaction troubleshooting",
+    "content": "If your transaction is declined, please check your daily spending limit or ensure your card is activated for online use. Contact your bank if the issue persists."
   },
   {
     "id": 3,
-    "topic": "payment methods",
-    "content": "We securely accept major credit cards (Visa, MasterCard, Amex), PayPal, and Apple Pay. For enterprise clients, bank transfers and invoicing options are available upon request."
+    "topic": "shipping and delivery",
+    "content": "Standard shipping takes 5-7 business days. Expedited shipping arrives in 2-3 days. Orders placed before 2 PM EST are shipped the same day."
   },
   {
     "id": 4,
-    "topic": "customer support hours",
-    "content": "Our support team is available 24/7 via live chat. Phone support is available from 9 AM to 6 PM (EST), Monday through Friday. Email queries are typically answered within 24 hours."
+    "topic": "return instructions",
+    "content": "To return an item, visit the 'My Orders' page and click 'Request Return'. Print the prepaid shipping label and drop the package at any authorized courier location within 30 days."
   },
   {
     "id": 5,
-    "topic": "password reset",
-    "content": "If you've forgotten your password, click on 'Forgot Password' at the login screen. A reset link will be sent to your registered email address. This link expires in 1 hour."
+    "topic": "refund processing time",
+    "content": "Once we receive your return, refunds are initiated immediately. However, it may take 5-10 business days for the funds to reflect in your bank account depending on your financial institution."
   },
   {
     "id": 6,
-    "topic": "order tracking",
-    "content": "Once your order ships, you will receive a tracking number via email. You can also track your order status in real-time by logging into your account dashboard."
+    "topic": "account password reset",
+    "content": "Forgot your credentials? Click the 'Forgot Password' link on the login page. Enter your registered email to receive a secure reset link valid for 60 minutes."
   },
   {
     "id": 7,
-    "topic": "subscription plans",
-    "content": "We offer three tiers: Basic ($10/mo), Pro ($30/mo), and Enterprise (Custom pricing). You can upgrade or downgrade your plan at any time from the billing settings."
+    "topic": "order tracking status",
+    "content": "You can track your package in real-time. Log in to your account, go to 'Order History', and click on the tracking number to see the latest courier updates."
   },
   {
     "id": 8,
-    "topic": "cancel subscription",
-    "content": "To cancel your subscription, go to Settings > Billing > Cancel Subscription. Your access will continue until the end of the current billing cycle."
+    "topic": "subscription plans",
+    "content": "We offer three tiers: Basic ($10/month), Pro ($29/month), and Enterprise (Custom pricing). Annual billing offers a 20% discount compared to monthly billing."
   },
   {
     "id": 9,
-    "topic": "refund timeline",
-    "content": "Refunds are processed immediately upon return inspection. Depending on your bank or payment provider, it may take 5-10 business days for the funds to appear in your account."
+    "topic": "canceling membership",
+    "content": "You can cancel your active membership anytime from the 'Billing Settings' tab. Your access will remain active until the end of the current billing cycle."
   },
   {
     "id": 10,
-    "topic": "international shipping",
-    "content": "Yes, we ship to over 150 countries. International shipping rates and customs duties vary by location and are calculated at checkout."
+    "topic": "international orders",
+    "content": "We ship globally to over 150 countries. Customs duties and import taxes are calculated at checkout and are the responsibility of the customer."
   },
   {
     "id": 11,
-    "topic": "data privacy",
-    "content": "We take data privacy seriously. Your personal information is encrypted and never sold to third parties. For full details, please refer to our GDPR-compliant Privacy Policy page."
+    "topic": "data privacy policy",
+    "content": "Your data security is our priority. We use end-to-end encryption and strictly adhere to GDPR and CCPA regulations. We never sell your personal data to third parties."
   },
   {
     "id": 12,
-    "topic": "api access",
-    "content": "API access is available for Pro and Enterprise plan users. You can generate API keys from the Developer settings in your dashboard. Rate limits apply based on your tier."
+    "topic": "developer api keys",
+    "content": "Developers can generate API keys from the dashboard under 'Integrations'. Rate limits are set to 1000 requests per minute for Pro users."
   },
   {
     "id": 13,
-    "topic": "bulk orders",
-    "content": "We offer discounts for bulk orders or corporate gifting. Please contact our sales team at sales@example.com with your requirements for a custom quote."
+    "topic": "wholesale and bulk",
+    "content": "For orders exceeding 50 units, we offer wholesale pricing. Please contact our sales team at sales@company.com for a custom quote and volume discounts."
   },
   {
     "id": 14,
-    "topic": "mobile app",
-    "content": "Our mobile app is available for both iOS and Android devices. You can manage orders, receive notifications, and access exclusive mobile-only deals through the app."
+    "topic": "mobile application",
+    "content": "Our official mobile app is available on both the Apple App Store and Google Play Store. It features exclusive app-only deals and push notifications for order updates."
   },
   {
     "id": 15,
-    "topic": "account deletion",
-    "content": "To permanently delete your account and all associated data, please submit a request through the Privacy Settings tab. This action is irreversible."
+    "topic": "deleting user account",
+    "content": "If you wish to permanently remove your profile, navigate to 'Privacy Settings' and select 'Delete Account'. Warning: This action is irreversible and erases all history."
   },
   {
     "id": 16,
-    "topic": "gift cards",
-    "content": "Digital gift cards are available in denominations of $10, $25, $50, and $100. They are delivered instantly via email and have no expiration date."
+    "topic": "gift card redemption",
+    "content": "Gift cards can be redeemed at checkout by entering the unique 16-digit code in the promo box. Balance does not expire and can be used across multiple orders."
   },
   {
     "id": 17,
-    "topic": "warranty",
-    "content": "All electronics come with a standard 1-year manufacturer warranty. Extended warranty plans covering accidental damage are available for purchase at checkout."
+    "topic": "product warranty claim",
+    "content": "All electronic devices come with a 1-year manufacturer warranty covering defects. Accidental damage is not covered unless an extended protection plan was purchased."
   },
   {
     "id": 18,
-    "topic": "affiliate program",
-    "content": "Join our affiliate program to earn commissions on referrals. Sign up via the footer link to get your unique referral code and marketing assets."
+    "topic": "affiliate marketing program",
+    "content": "Earn commissions by referring new customers! Sign up for our affiliate program to get a unique referral link. Payouts are processed monthly via PayPal."
   },
   {
     "id": 19,
-    "topic": "failed payment",
-    "content": "If your payment fails, please check your card details and ensure sufficient funds. If the issue persists, try a different payment method or contact your bank."
+    "topic": "customer support contact",
+    "content": "Need help? Our support team operates 24/7. Start a live chat on our website or email us at support@company.com. Phone support is available during business hours."
   },
   {
     "id": 20,
-    "topic": "general inquiry",
-    "content": "For any other questions not listed here, please use the contact form on our website or email general@example.com."
+    "topic": "modifying an order",
+    "content": "Orders can be modified or canceled within 30 minutes of placement. After that window, the order is processed for shipping and cannot be changed."
+  },
+  {
+    "id": 21,
+    "topic": "student discount",
+    "content": "Students with a valid .edu email address are eligible for a 15% discount on all products. Verify your student status via ID.me at checkout."
+  },
+  {
+    "id": 22,
+    "topic": "security verification",
+    "content": "For your protection, high-value orders may trigger a manual security review. You might receive a call or email to verify authorization before shipment."
+  },
+  {
+    "id": 23,
+    "topic": "newsletter subscription",
+    "content": "Subscribe to our weekly newsletter to receive updates on new arrivals and exclusive promotions. You can unsubscribe at any time via the link in the email footer."
+  },
+  {
+    "id": 24,
+    "topic": "sustainable packaging",
+    "content": "We are committed to the environment. All our packaging materials are 100% recyclable and sourced from sustainable forests."
+  },
+  {
+    "id": 25,
+    "topic": "job or carrier opportunities",
+    "content": "Want to join our team? Check out our 'Careers' page for current openings. We are a remote-first company hiring globally."
   }
 ]
