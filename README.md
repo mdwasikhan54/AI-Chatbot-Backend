@@ -57,6 +57,40 @@ AI-Chatbot-Backend/
 
 ---
 
+1. **User Query:** User asks a question via the protected `/chat` endpoint.
+2. **Context Retrieval:** The system extracts keywords and searches `knowledge.json` for the most relevant match using a weighted scoring algorithm.
+3. **Augmentation:** The retrieved context is prepended to the user query.
+4. **Response Generation:** The final response is generated based strictly on the retrieved facts to prevent hallucinations.
+
+---
+
+## 📸 API Demonstration (Preview)
+
+Below is a preview of the **Swagger UI** and a sample **RAG-based conversation** from the actual application:
+
+### 1. Interactive Documentation (Swagger UI)
+<img width="1000" height="600" alt="swaggerUI" src="https://github.com/user-attachments/assets/0e1cfdb9-d7af-42bd-98f6-8c97eb120989" />
+
+### 2. Sample RAG Conversation
+**Endpoint:** `POST /api/v1/chat/chat`  
+**Scenario:** User asking about the payment process.
+
+**Request:**
+```json
+{
+  "message": "What is your payment process?"
+}
+```
+
+**Response:**
+
+```json
+{
+  "response": "🔍 **Retrieved Context:** We accept all major credit cards including Visa, MasterCard... 🤖 **AI Answer:** Based on our documents, we accept multiple payment methods including Visa, MasterCard, and PayPal."
+}
+
+```
+
 ## 🏗️ Technical Architecture (Deep Dive)
 
 ### 1. The RAG Pipeline (Retrieval-Augmented Generation)
@@ -212,3 +246,4 @@ If I were to expand this project further, I would implement:
 </div>
 
 If you find this project helpful, please drop a ⭐ star on the repo\!
+
